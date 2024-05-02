@@ -225,30 +225,30 @@ In order to have a code easy to test, I have decided to devide the API in the fo
 	- Physics
 	======
 
-1.0 - User Creates a Study Group ("MathStudyGroup", Math), System allow creation, StudyGroup created on database with createdDate equal sysdate.
-1.1 - User Creates a Study Group ("PhysicsGroup", Physics), System allow creation, StudyGroup created on database
-1.2 - User Creates a Study Group ("ChemistryGroup", Chemistry), System don't allow creation, "StudyGroup already exist"
+* User Creates a Study Group ("MathStudyGroup", Math), System allow creation, StudyGroup created on database with createdDate equal sysdate.
+* User Creates a Study Group ("PhysicsGroup", Physics), System allow creation, StudyGroup created on database.
+* User Creates a Study Group ("ChemistryGroup", Chemistry), System don't allow creation, "StudyGroup already exist".
 
-2   - Student Id7890 Join "ChemistryGroup", system allow student to join, StudyGroup no have Students[Id4567, Id1234, Id7890]
+* Student Id7890 Join "ChemistryGroup", system allow student to join, StudyGroup no have Students[Id4567, Id1234, Id7890]
 
-2.1 - Student Id7890 Join "MathGroup", system don't allow student to join, StudyGroup "MathGroup" do not exist
-2.2 - Student Id1111 Join "ChemistryGroup", system don't allow student to join, Student Id1111 do not exist
-2.3 - Student Id1234 Join "ChemistryGroup", system don't allow student to join, Student already joined "ChemistryGroup"
+* Student Id7890 Join "MathGroup", system don't allow student to join, StudyGroup "MathGroup" do not exist
+* Student Id1111 Join "ChemistryGroup", system don't allow student to join, Student Id1111 do not exist
+* Student Id1234 Join "ChemistryGroup", system don't allow student to join, Student already joined "ChemistryGroup"
 
-3   - User search for all Study groups, system return list of study groups containing - "ChemistryGroup", Chemistry, Students[Id4567, Id1234], DateXPTO.
-3.1 - User search for specific group by subject "Chemistry", system return list of study groups containing - "ChemistryGroup", Chemistry, Students[Id4567, Id1234], DateXPTO.
-3.2 - User search for specific group by subject "Math", system return empty list
+* User search for all Study groups, system return list of study groups containing - "ChemistryGroup", Chemistry, Students[Id4567, Id1234], DateXPTO.
+* User search for specific group by subject "Chemistry", system return list of study groups containing - "ChemistryGroup", Chemistry, Students[Id4567, Id1234], DateXPTO.
+* User search for specific group by subject "Math", system return empty list
 
-4 - Student Id1234 leave "ChemistryGroup", system allow removal, study group now has "ChemistryGroup", Chemistry, Students[Id4567], DateXPTO.
+* Student Id1234 leave "ChemistryGroup", system allow removal, study group now has "ChemistryGroup", Chemistry, Students[Id4567], DateXPTO.
 
 
  ## Manual (E2E) tests:
 
 * Assuming all previous tests were implemented, I would suggest to execute the rest of the Acceptence Criteria scenarios, plus a few UI validations:
 
-5 - User Creates a Study Group ("Math", Math), System don't allow creation, "Name must have lenght between 5 and 30!"
-5.1 - User Creates a Study Group ("!NameWithLenghHigherThan30Valid", Math), System don't allow creation, "Name must have lenght between 5 and 30!"
-5.2 - User Creates a Study Group ("HistoryGroup", History), System don't allow creation, "History is not a valida subject!"
+* User Creates a Study Group ("Math", Math), System don't allow creation, "Name must have lenght between 5 and 30!"
+* User Creates a Study Group ("!NameWithLenghHigherThan30Valid", Math), System don't allow creation, "Name must have lenght between 5 and 30!"
+* User Creates a Study Group ("HistoryGroup", History), System don't allow creation, "History is not a valida subject!"
 
 Assuming a complete system using this API wth an UI we should validate:
 
