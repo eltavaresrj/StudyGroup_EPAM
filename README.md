@@ -9,7 +9,7 @@
 
 2 => All features have at least one test scenario implemented
 
-3 => Script
+3 => [Script](https://github.com/eltavaresrj/EPAM_TEST/blob/master/EPAM_TEST/Scripts/RequestedScript.sql)
 
 --------------------------------------
 
@@ -22,13 +22,13 @@ In order to have a code easy to test, I have decided to devide the API in the fo
 
 --------------------------------------
 
-##StudyGroupFeature Test Scenarios
+## StudyGroupFeature Test Scenarios
 
-##[Unit Tests](https://github.com/eltavaresrj/EPAM_TEST/tree/master/Tests/UnitTests):
+## [Unit Tests](https://github.com/eltavaresrj/EPAM_TEST/tree/master/Tests/UnitTests):
 
 ###1 - Controller [ Validate method response based on mocked service response ] - Ensure proper http response mapping
 
-####- GetAll
+#### - GetAll
 ======
 
  * Get Study Groups, Service returns Study Group List, Receive Status OK and List of Study Groups
@@ -37,7 +37,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Get Study Groups, Service returns exception, Receive Status Error with message "Error when trying to get Study Groups"
  ======
 
-####- GetBySubject
+#### - GetBySubject
 ======
 
  * Get StudyGroup by subject "Math", Service returns study group, Receive status OK and study group
@@ -46,7 +46,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Get StudyGroup by subject "Math", Service returns exception, Receive Status Error with message "Error when trying to get Study Group"
  ======
 
-####- Create
+#### - Create
 ======
 
  * Create StudyGroup, Service returns OK, Receive status OK
@@ -55,7 +55,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Create StudyGroup without Subject, Receive BadRequest
  ======
 
-####- Join
+#### - Join
 ======
 
  * Join StudyGroup, Service returns OK, Receive status OK
@@ -64,7 +64,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Join StudyGroup without StudentId, Receive BadRequest
 ======
 
-####- Remove
+#### - Remove
 ======
 
  * Remove from StudyGroup, Service returns OK, Receive status OK
@@ -73,9 +73,9 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Remove from StudyGroup without StudentId, Receive BadRequest
  ======
  
-###2 - Application :: Service [ Validate method response based on mocked repository and adapter responses ] - Ensure integrity between repository response and adapters consumptions
+### 2 - Application :: Service [ Validate method response based on mocked repository and adapter responses ] - Ensure integrity between repository response and adapters consumptions
 
-####- GetAllStudyGroupsAsync
+#### - GetAllStudyGroupsAsync
 ======
 
  * Get Study Groups, Repository returns Study Group List, Adapter receives a List of Study Groups
@@ -84,7 +84,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Get Study Groups, Repository returns exception, Method respond with exception
  ======
 
-####- SearchStudyGroupBySubjectAsync
+#### - SearchStudyGroupBySubjectAsync
 ======
 
  * Search Study Group by subject Math, Repository returns Study Group, Adapter receives the Study Group
@@ -96,30 +96,30 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Search Study Group by subject Math, Repository returns exception, Method respond with exception
 ======
 
-####- CreateStudyGroupAsync
+#### - CreateStudyGroupAsync
 ======
 
  * Create StudyGroup, Adapter returns StudyGroup, Repository receives StudyGroup
  * Create StudyGroup, Adapter returns null, Repository receives null
  ======
 
-####- JoinUserToStudyGroupAsync
+#### - JoinUserToStudyGroupAsync
 ======
 
  * Join StudyGroup, repository returns OK, OK
  * Join StudyGroup, repository returns exception, thrown exception
 ======
 
-####- RemoveUserFromStudyGroupAsync
+#### - RemoveUserFromStudyGroupAsync
 ======
 
   * Remove from StudyGroup, repository returns OK, OK
   * Remove from StudyGroup, repository returns exception, thrown exception
   ======
 
-###3 - Application :: Adapter [ Validate method mapping from dto to domain and vice versa ] - Ensure proper mapping, adapting and casting rules
+### 3 - Application :: Adapter [ Validate method mapping from dto to domain and vice versa ] - Ensure proper mapping, adapting and casting rules
 
-####- AdaptStudyGroupFromDtoToDomain
+#### - AdaptStudyGroupFromDtoToDomain
 ======
 
  * Adapt StudyGroupDto ("NameXpto", "Math"), Receive StudyGroup ("NameXpto", Math, CreatedDate)
@@ -132,7 +132,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Adapt NULL, Receive NULL
  ======
 
- ####- AdaptStudyGroupsFromDomainToDto
+ #### - AdaptStudyGroupsFromDomainToDto
  ======
 
  * Adapt List of StudyGroup with one ("NameXpto", Math, Students("1:S1","2:S2"), sysdate), Receive List of StudyGroupDto with One ("NameXpto", "Math", Students("S1","S2"), sysdate)
@@ -144,9 +144,9 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Adapt List of StudyGroup with one StudyGroup without subject, Receive exception because subject is required
  ======
 
-###4 - Repository [ Validate method response based on in memory database response ] - Ensure proper querying and database configurations
+### 4 - Repository [ Validate method response based on in memory database response ] - Ensure proper querying and database configurations
 
-####- GetAll
+#### - GetAll
 ======
 
  * Get Study Groups, dbContext returns Study Group List with student, Receive study groups with students
@@ -156,7 +156,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Get Study Groups, dbContext returns exception, thrown exception
  ======
 
-####- SearchStudyGroupBySubjectAsync
+#### - SearchStudyGroupBySubjectAsync
 ======
 
  * Get StudyGroup by subject "Math", dbContext returns TWO study groups (one with Math and one with Chemistry) with students, Receive Math study group only and with students
@@ -166,7 +166,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Get StudyGroup by subject "Math", dbContext returns exception, thrown exception
  ======
 
-####- CreateStudyGroupAsync
+#### - CreateStudyGroupAsync
 ======
 
  * Create StudyGroup, Receive OK
@@ -176,7 +176,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Create StudyGroup without Subject that already exist, thrown exception
  ======
 
-####- JoinUserToStudyGroupAsync
+#### - JoinUserToStudyGroupAsync
 ======
 
  * Join StudyGroup, Receive OK
@@ -187,7 +187,7 @@ In order to have a code easy to test, I have decided to devide the API in the fo
  * Join StudyGroup with inexistent StudentId, thrown exception
 ======
 
-####- RemoveUserFromStudyGroupAsync
+#### - RemoveUserFromStudyGroupAsync
 ======
 
  * Remove from StudyGroup, Receive OK
